@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brooks Atlanta Tech — Websites That Work As Hard As You Do</title>
+<meta name="description" content="Brooks Atlanta Tech builds high-converting websites for Atlanta small businesses. Monthly plans. No setup fees. Results guaranteed." />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --black: #080810;
+    --deep: #0D0D1C;
+    --panel: #111122;
+    --border: #1E1E35;
+    --accent: #00E5CC;
+    --accent2: #FF4D00;
+    --white: #F0F0F8;
+    --muted: #555570;
+    --mid: #888899;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(8,8,16,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 4px;
+    color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #000;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,204,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,204,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent);
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,229,204,0.08) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 10vw, 130px);
+    line-height: 0.92;
+    letter-spacing: 2px;
+    position: relative;
+    max-width: 900px;
+  }
+
+  .hero h1 .accent { color: var(--accent); }
+  .hero h1 .accent2 { color: var(--accent2); }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--mid);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-top: 28px;
+    position: relative;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: #fff;
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--mid);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-stat-row {
+    display: flex;
+    gap: 48px;
+    margin-top: 72px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .hero-stat .label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap {
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+    background: var(--deep);
+  }
+
+  .marquee-track {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 24s linear infinite;
+  }
+
+  .marquee-item {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0 32px;
+  }
+
+  .marquee-item span { color: var(--accent); margin-right: 32px; }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── SECTION BASE ── */
+  section {
+    padding: 100px 40px;
+    position: relative;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    letter-spacing: 2px;
+    line-height: 1;
+    max-width: 700px;
+  }
+
+  /* ── PROBLEM SECTION ── */
+  .problem {
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 60px;
+    align-items: start;
+  }
+
+  .problem-left p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--mid);
+    max-width: 440px;
+  }
+
+  .problem-left p strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .problem-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .pain-item {
+    padding: 20px 24px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: border-color 0.2s;
+  }
+
+  .pain-item:hover { border-color: var(--accent2); }
+
+  .pain-x {
+    font-family: 'Space Mono', monospace;
+    color: var(--accent2);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .pain-text {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .service-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { border-color: rgba(0,229,204,0.2); }
+
+  .service-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .service-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .service-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .service-price {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 2px;
+  }
+
+  /* ── PROCESS ── */
+  .process { background: var(--deep); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .step {
+    padding: 32px 28px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .step-title {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+
+  .step-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── PRICING ── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .price-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 40px 36px;
+    position: relative;
+    transition: transform 0.2s;
+  }
+
+  .price-card.featured {
+    border-color: var(--accent);
+    background: #0A1A18;
+  }
+
+  .price-card.featured::before {
+    content: 'MOST POPULAR';
+    position: absolute;
+    top: -1px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #000;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 4px 14px;
+  }
+
+  .price-card:hover { transform: translateY(-4px); }
+
+  .price-tier {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .price-amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    letter-spacing: 2px;
+    line-height: 1;
+    color: var(--white);
+  }
+
+  .price-amount span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .price-period {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+    margin-bottom: 28px;
+  }
+
+  .price-features {
+    list-style: none;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .price-features li {
+    font-size: 13px;
+    color: var(--mid);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .price-features li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 11px;
+  }
+
+  .price-cta {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    text-decoration: none;
+    width: 100%;
+  }
+
+  .price-cta.dark {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--mid);
+  }
+
+  .price-cta.dark:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .price-cta.bright {
+    background: var(--accent);
+    color: #000;
+  }
+
+  .price-cta.bright:hover { opacity: 0.85; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--deep); }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .testi-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 32px;
+  }
+
+  .testi-quote {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--mid);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .testi-quote::before {
+    content: '"';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    color: var(--accent);
+    line-height: 0;
+    display: block;
+    margin-bottom: 16px;
+    margin-top: 12px;
+  }
+
+  .testi-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+
+  .testi-biz {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-top: 3px;
+    text-transform: uppercase;
+  }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    text-align: center;
+    padding: 120px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,229,204,0.06) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .cta-section .section-title {
+    max-width: 100%;
+    margin: 0 auto 12px;
+  }
+
+  .cta-section .section-label {
+    justify-content: center;
+  }
+
+  .cta-section .section-label::before { display: none; }
+
+  .cta-sub {
+    font-size: 16px;
+    color: var(--muted);
+    margin: 20px auto 40px;
+    max-width: 420px;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--deep);
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: var(--accent);
+  }
+
+  .footer-copy {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    max-width: 520px;
+    width: 100%;
+    padding: 48px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .modal-close:hover { color: var(--white); }
+
+  .modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+
+  .modal-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: var(--deep);
+    border: 1px solid var(--border);
+    color: var(--white);
+    padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 80px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--accent);
+    color: #000;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: opacity 0.2s;
+  }
+
+  .form-submit:hover { opacity: 0.85; }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 120px 20px 60px; }
+    section { padding: 70px 20px; }
+    .problem-grid,
+    .services-grid,
+    .process-steps,
+    .pricing-grid,
+    .testi-grid { grid-template-columns: 1fr; }
+    footer { padding: 28px 20px; text-align: center; justify-content: center; }
+    .modal { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Brooks Atlanta Tech</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+  </ul>
+  <a class="nav-cta" href="#" onclick="openModal(); return false;">Get Free Mockup</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-tag">Atlanta Web Design & Development</div>
+  <h1>
+    WEBSITES<br>
+    THAT <span class="accent">WORK</span><br>
+    AS HARD<br>
+    AS <span class="accent2">YOU DO.</span>
+  </h1>
+  <p class="hero-sub">
+    We build high-converting websites for Atlanta small businesses — contractors, salons, restaurants, realtors, and beyond. Monthly plans. No setup fees. Real results.
+  </p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="#" onclick="openModal(); return false;">Get Your Free Mockup</a>
+    <a class="btn-ghost" href="#pricing">View Plans</a>
+  </div>
+  <div class="hero-stat-row">
+    <div class="hero-stat">
+      <div class="num">7</div>
+      <div class="label">Day Launch</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">$0</div>
+      <div class="label">Setup Fee</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">ATL</div>
+      <div class="label">Based & Focused</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">100%</div>
+      <div class="label">Done For You</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item"><span>✦</span> Lead Generation</span>
+    <span class="marquee-item"><span>✦</span> Mobile Responsive</span>
+    <span class="marquee-item"><span>✦</span> SEO Optimized</span>
+    <span class="marquee-item"><span>✦</span> Fast Load Times</span>
+    <span class="marquee-item"><span>✦</span> Atlanta Small Business</span>
+    <span class="marquee-item"><span>✦</span> Monthly Maintenance</span>
+    <span class="marquee-item"><span>✦</span> No Setup Fees</span>
+    <span class="marquee-item"><span>✦</span> Custom Design</span>
+    <span class="marquee-item"><span>✦</span> Lead Generation</span>
+    <span class="marquee-item"><span>✦</span> Mobile Responsive</span>
+    <span class="marquee-item"><span>✦</span> SEO Optimized</span>
+    <span class="marquee-item"><span>✦</span> Fast Load Times</span>
+    <span class="marquee-item"><span>✦</span> Atlanta Small Business</span>
+    <span class="marquee-item"><span>✦</span> Monthly Maintenance</span>
+    <span class="marquee-item"><span>✦</span> No Setup Fees</span>
+    <span class="marquee-item"><span>✦</span> Custom Design</span>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="about">
+  <div class="section-label">The Reality</div>
+  <h2 class="section-title reveal">MOST SMALL BUSINESS WEBSITES ARE LOSING YOU MONEY.</h2>
+  <div class="problem-grid">
+    <div class="problem-left reveal">
+      <p>
+        You've worked hard to build your business. But if your website looks outdated, loads slow, or doesn't tell people <strong>exactly what to do</strong> — you're sending potential customers straight to your competition.
+        <br><br>
+        That ends today. <strong>Brooks Atlanta Tech</strong> builds sites engineered to convert — not just look good.
+      </p>
+    </div>
+    <div class="problem-right reveal">
+      <div class="pain-item">
+        <span class="pain-x">✕</span>
+        <span class="pain-text">Outdated site that doesn't represent your brand or services accurately</span>
+      </div>
+      <div class="pain-item">
+        <span class="pain-x">✕</span>
+        <span class="pain-text">No clear call-to-action — visitors don't know what to do next</span>
+      </div>
+      <div class="pain-item">
+        <span class="pain-x">✕</span>
+        <span class="pain-text">Slow load times killing your Google ranking and bounce rate</span>
+      </div>
+      <div class="pain-item">
+        <span class="pain-x">✕</span>
+        <span class="pain-text">Not showing up on Google when local customers search for you</span>
+      </div>
+      <div class="pain-item">
+        <span class="pain-x">✕</span>
+        <span class="pain-text">Paying too much for a web developer who takes weeks to make simple updates</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What We Build</div>
+  <h2 class="section-title reveal">EVERY SITE. BUILT TO PERFORM.</h2>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <div class="service-name">Starter Site</div>
+      <div class="service-desc">Clean, fast, and credibility-building. Perfect for businesses that need a strong online presence without the complexity. Includes homepage, about, services, and contact.</div>
+      <div class="service-price">→ From $149/mo</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <div class="service-name">Growth Site</div>
+      <div class="service-desc">Designed to generate leads. Multi-page build with lead capture forms, SEO foundation, Google Analytics, and monthly performance updates built in.</div>
+      <div class="service-price">→ From $249/mo</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <div class="service-name">Pro Site</div>
+      <div class="service-desc">Full-scale business weapon. Custom design, booking integration, e-commerce capability, advanced SEO, and priority support. Built for businesses ready to dominate their market.</div>
+      <div class="service-price">→ From $399/mo</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-label">How It Works</div>
+  <h2 class="section-title reveal">FROM ZERO TO LIVE IN 7 DAYS.</h2>
+  <div class="process-steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Discovery Call</div>
+      <div class="step-desc">We learn your business, goals, and what sets you apart. You fill out our intake form and we handle the rest.</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">02</div>
+      <div class="step-title">Free Mockup</div>
+      <div class="step-desc">Before you spend a dollar, we show you exactly what your site will look like. No pressure, no obligation.</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">03</div>
+      <div class="step-title">We Build It</div>
+      <div class="step-desc">Our team builds your custom site. You review, request changes, and approve. We move fast — 7 days or less.</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">04</div>
+      <div class="step-title">You Go Live</div>
+      <div class="step-desc">Site launches. We handle hosting, updates, and support every month going forward. You focus on your business.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-label">Transparent Pricing</div>
+  <h2 class="section-title reveal">NO SETUP FEES. NO SURPRISES.</h2>
+  <div class="pricing-grid">
+    <div class="price-card reveal">
+      <div class="price-tier">Starter</div>
+      <div class="price-amount">$149<span>/mo</span></div>
+      <div class="price-period">No setup fee. Cancel anytime.</div>
+      <ul class="price-features">
+        <li>Up to 4 custom pages</li>
+        <li>Mobile-responsive design</li>
+        <li>Contact form + Google Maps</li>
+        <li>Basic SEO setup</li>
+        <li>Hosting included</li>
+        <li>Monthly content updates</li>
+      </ul>
+      <a href="#" class="price-cta dark" onclick="openModal(); return false;">Get Free Mockup</a>
+    </div>
+    <div class="price-card featured reveal">
+      <div class="price-tier">Growth</div>
+      <div class="price-amount">$249<span>/mo</span></div>
+      <div class="price-period">No setup fee. Cancel anytime.</div>
+      <ul class="price-features">
+        <li>Up to 8 custom pages</li>
+        <li>Lead capture system</li>
+        <li>Google Analytics setup</li>
+        <li>Advanced SEO optimization</li>
+        <li>Social media integration</li>
+        <li>Priority support</li>
+        <li>Monthly strategy call</li>
+      </ul>
+      <a href="#" class="price-cta bright" onclick="openModal(); return false;">Get Free Mockup</a>
+    </div>
+    <div class="price-card reveal">
+      <div class="price-tier">Pro</div>
+      <div class="price-amount">$399<span>/mo</span></div>
+      <div class="price-period">No setup fee. Cancel anytime.</div>
+      <ul class="price-features">
+        <li>Unlimited pages</li>
+        <li>Online booking / e-commerce</li>
+        <li>Custom integrations</li>
+        <li>Full SEO management</li>
+        <li>Ad landing page builds</li>
+        <li>Dedicated account manager</li>
+        <li>Weekly performance reports</li>
+      </ul>
+      <a href="#" class="price-cta dark" onclick="openModal(); return false;">Get Free Mockup</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-label">Client Results</div>
+  <h2 class="section-title reveal">REAL BUSINESSES. REAL RESULTS.</h2>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-quote">They had our site live in under a week. We started getting calls from the website within the first month — that had never happened before.</div>
+      <div class="testi-name">Marcus T.</div>
+      <div class="testi-biz">Residential Contractor — Atlanta, GA</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-quote">I didn't think my salon needed a website this nice. Now clients book online before they even call. It's a whole different level of professional.</div>
+      <div class="testi-name">Tanya R.</div>
+      <div class="testi-biz">Hair & Beauty Studio — Decatur, GA</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-quote">No setup fee sealed the deal for me. But the site itself is what keeps me subscribed. It looks better than businesses 10x our size.</div>
+      <div class="testi-name">James W.</div>
+      <div class="testi-biz">HVAC & Plumbing — Marietta, GA</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="section-label">Ready to Start</div>
+  <h2 class="section-title reveal">LET'S BUILD SOMETHING THAT WORKS.</h2>
+  <p class="cta-sub reveal">No commitment. No setup fee. Just a free mockup of what your new site could look like — built specifically for your business.</p>
+  <div class="cta-actions reveal">
+    <a class="btn-primary" href="#" onclick="openModal(); return false;">Get Your Free Mockup</a>
+    <a class="btn-ghost" href="tel:+14045550000">Call Us Direct</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Brooks Atlanta Tech</div>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Brooks Atlanta Tech. Atlanta, GA.</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title">GET YOUR FREE MOCKUP</div>
+    <p class="modal-sub">Tell us about your business and we'll build a free preview of your new site — no commitment required.</p>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-group">
+        <label>Business Name</label>
+        <input type="text" name="business_name" placeholder="Your Business Name" required />
+      </div>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" name="name" placeholder="First & Last Name" required />
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" name="phone" placeholder="(404) 000-0000" required />
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="you@yourbusiness.com" required />
+      </div>
+      <div class="form-group">
+        <label>Industry / Business Type</label>
+        <select name="industry">
+          <option value="">Select your industry</option>
+          <option>Contractor / Construction</option>
+          <option>Salon / Beauty</option>
+          <option>Restaurant / Food</option>
+          <option>Real Estate</option>
+          <option>HVAC / Plumbing</option>
+          <option>Retail / E-commerce</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>What's your biggest website problem right now?</label>
+        <textarea name="message" placeholder="No website, outdated site, not getting leads..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send My Free Mockup Request →</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Modal
+  function openModal() {
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
