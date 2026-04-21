@@ -849,6 +849,68 @@
     transform: translateY(0);
   }
 
+  /* ── AGENT MODAL ── */
+  .agent-modal { max-width: 640px; }
+
+  .commission-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+  }
+
+  .commission-table th {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .commission-table td {
+    padding: 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
+  .commission-table tr:last-child td { border-bottom: none; }
+
+  .commission-table td:first-child { color: var(--white); font-weight: 600; }
+  .commission-table td.highlight { color: var(--accent); font-weight: 700; font-family: 'Space Mono', monospace; }
+
+  .agent-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 24px 0;
+  }
+
+  .agent-perks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .agent-perk {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  .agent-perk-icon {
+    color: var(--accent);
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
   /* ── MOBILE ── */
   @media (max-width: 768px) {
     nav { padding: 16px 20px; }
@@ -874,6 +936,7 @@
     <li><a href="#services">Services</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#" onclick="openAgentModal(); return false;" style="color:var(--accent);">Sales Agents</a></li>
   </ul>
   <a class="nav-cta" href="#" onclick="openModal(); return false;">Begin Process</a>
 </nav>
@@ -890,7 +953,7 @@
     AS <span class="accent2">YOU DO.</span>
   </h1>
   <p class="hero-sub">
-    We build high-converting websites for Atlanta small businesses — contractors, salons, restaurants, realtors, and beyond. Monthly plans. No setup fees. Real results.
+    We build high-converting websites for Atlanta small businesses — contractors, salons, restaurants, realtors, and beyond. Monthly plans. Low setup fees. Free consultation.
   </p>
   <div class="hero-actions">
     <a class="btn-primary" href="#" onclick="openModal(); return false;">Begin Process</a>
@@ -902,7 +965,7 @@
       <div class="label">Day Launch</div>
     </div>
     <div class="hero-stat">
-      <div class="num">$0</div>
+      <div class="num">LOW</div>
       <div class="label">Setup Fee</div>
     </div>
     <div class="hero-stat">
@@ -925,7 +988,7 @@
     <span class="marquee-item"><span>✦</span> Fast Load Times</span>
     <span class="marquee-item"><span>✦</span> Atlanta Small Business</span>
     <span class="marquee-item"><span>✦</span> Monthly Maintenance</span>
-    <span class="marquee-item"><span>✦</span> No Setup Fees</span>
+    <span class="marquee-item"><span>✦</span> Free Consultation</span>
     <span class="marquee-item"><span>✦</span> Custom Design</span>
     <span class="marquee-item"><span>✦</span> Lead Generation</span>
     <span class="marquee-item"><span>✦</span> Mobile Responsive</span>
@@ -933,7 +996,7 @@
     <span class="marquee-item"><span>✦</span> Fast Load Times</span>
     <span class="marquee-item"><span>✦</span> Atlanta Small Business</span>
     <span class="marquee-item"><span>✦</span> Monthly Maintenance</span>
-    <span class="marquee-item"><span>✦</span> No Setup Fees</span>
+    <span class="marquee-item"><span>✦</span> Free Consultation</span>
     <span class="marquee-item"><span>✦</span> Custom Design</span>
   </div>
 </div>
@@ -1127,6 +1190,7 @@
   <ul class="footer-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#" onclick="openAgentModal(); return false;">Sales Agents</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="footer-copy">© 2026 Brooks Atlanta Tech. Atlanta, GA.</div>
@@ -1137,7 +1201,7 @@
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div class="modal-title">BEGIN YOUR PROCESS</div>
-    <p class="modal-sub">Tell us about your business and we'll build a free preview of your new site — no commitment required.</p>
+    <p class="modal-sub">Book your free consultation. Tell us about your business and we'll map out exactly what your new site needs — no commitment required.</p>
     <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
       <div class="form-group">
         <label>Business Name</label>
@@ -1177,8 +1241,109 @@
   </div>
 </div>
 
+<!-- SALES AGENT MODAL -->
+<div class="modal-overlay" id="agentModal">
+  <div class="modal agent-modal">
+    <button class="modal-close" onclick="closeAgentModal()">✕</button>
+    <div class="modal-title">BECOME A SALES AGENT</div>
+    <p class="modal-sub">Partner with Brooks Atlanta Tech. We build. You sell. You earn. It's that direct.</p>
+
+    <div class="section-label" style="margin-bottom:12px;">How It Works</div>
+    <p style="font-size:13px; color:var(--mid); line-height:1.8; margin-bottom:20px;">
+      As a B.A.T. Sales Agent, you sell our website packages at <strong style="color:var(--white);">retail price</strong> to local businesses. We wholesale the service to you at a reduced rate — you keep the difference on every setup sale. No technical skills required. We handle every build, every update, every support request. Additional sales bonuses are structured individually during your onboarding conversation. You focus on closing.
+    </p>
+
+    <hr class="agent-divider" />
+
+    <div class="section-label" style="margin-bottom:12px;">Commission Structure</div>
+    <table class="commission-table">
+      <thead>
+        <tr>
+          <th>Package</th>
+          <th>Retail Price</th>
+          <th>Your Wholesale Cost</th>
+          <th>Your Earnings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Starter Setup</td>
+          <td>$497</td>
+          <td>$297</td>
+          <td class="highlight">$200 / sale</td>
+        </tr>
+        <tr>
+          <td>Growth Setup</td>
+          <td>$797</td>
+          <td>$497</td>
+          <td class="highlight">$300 / sale</td>
+        </tr>
+        <tr>
+          <td>Pro Setup</td>
+          <td>$1,297</td>
+          <td>$797</td>
+          <td class="highlight">$500 / sale</td>
+        </tr>
+        <tr>
+          <td>AI Avatar + BI Report</td>
+          <td>$299</td>
+          <td>$149</td>
+          <td class="highlight">$150 / sale</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="agent-divider" />
+
+    <div class="section-label" style="margin-bottom:12px;">What You Get</div>
+    <div class="agent-perks">
+      <div class="agent-perk">
+        <span class="agent-perk-icon">→</span>
+        <span>Branded sales materials and pitch decks to close clients with confidence</span>
+      </div>
+      <div class="agent-perk">
+        <span class="agent-perk-icon">→</span>
+        <span>Full B.A.T. fulfillment — we build, host, and maintain every client site</span>
+      </div>
+      <div class="agent-perk">
+        <span class="agent-perk-icon">→</span>
+        <span>Performance-based sales bonuses discussed and structured during onboarding</span>
+      </div>
+      <div class="agent-perk">
+        <span class="agent-perk-icon">→</span>
+        <span>Direct line to Brooks Atlanta Tech support for any client questions</span>
+      </div>
+      <div class="agent-perk">
+        <span class="agent-perk-icon">→</span>
+        <span>No cap on earnings — the more you close, the more you make</span>
+      </div>
+    </div>
+
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="hidden" name="type" value="Sales Agent Application" />
+      <div class="form-group">
+        <label>Your Full Name</label>
+        <input type="text" name="name" placeholder="First & Last Name" required />
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" name="phone" placeholder="(404) 000-0000" required />
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="you@email.com" required />
+      </div>
+      <div class="form-group">
+        <label>Tell us about your sales background</label>
+        <textarea name="background" placeholder="Previous sales experience, industries you've worked in, why you want to partner with B.A.T..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Apply to Become an Agent →</button>
+    </form>
+  </div>
+</div>
+
 <script>
-  // Modal
+  // Client Modal
   function openModal() {
     document.getElementById('modal').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -1191,6 +1356,21 @@
 
   document.getElementById('modal').addEventListener('click', function(e) {
     if (e.target === this) closeModal();
+  });
+
+  // Agent Modal
+  function openAgentModal() {
+    document.getElementById('agentModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeAgentModal() {
+    document.getElementById('agentModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('agentModal').addEventListener('click', function(e) {
+    if (e.target === this) closeAgentModal();
   });
 
   // Scroll reveal
